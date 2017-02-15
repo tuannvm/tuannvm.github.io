@@ -11,6 +11,7 @@
 
 First, you need to configure your aws credentials
 
+<!-- TEASER_END: Read more -->
 ```
 aws configure --profile <your-profile-name>
 AWS Access Key ID [None]: xxxxxxx

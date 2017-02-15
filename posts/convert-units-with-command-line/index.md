@@ -11,6 +11,7 @@
 
 It's fairly simple indeed.
 
+<!-- TEASER_END: Read more -->
 -------------------------
 
 ######Installation:
