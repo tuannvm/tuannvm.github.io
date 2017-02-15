@@ -14,7 +14,7 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
 <link rel="canonical" href="https://blog.tuannvm.com/">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/how-to-compile-python-with-custom-openssl-version/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/delete-old-ebs-snaphot/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -64,7 +64,85 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/how-to-compile-python-with-custom-openssl-version/" class="u-url">How to compile python with custom OpenSSL version</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/delete-old-ebs-snaphot/" class="u-url">Delete old EBS snaphot</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Tuannvm
+            </span></p>
+            <p class="dateline"><a href="posts/delete-old-ebs-snaphot/" rel="bookmark"><time class="published dt-published" datetime="2017-02-15T13:39:53+07:00" title="2017-02-15 13:39">2017-02-15 13:39</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>First, you need to configure your aws credentials</p>
+<pre class="code literal-block"><span></span>aws configure --profile &lt;your-profile-name&gt;
+AWS Access Key ID [None]: xxxxxxx
+AWS Secret Access Key [None]: xxxxxx
+Default region name [None]: xxxxxx
+Default output format [None]: xxxxx
+</pre>
+
+
+<p>Next step will be selecting the just-created aws profile:</p>
+<pre class="code literal-block"><span></span>export AWS_PROFILE=&lt;your-profile-name&gt;
+</pre>
+
+
+<p>Then we're ready to proceed:</p>
+<pre class="code literal-block"><span></span>aws ec2 describe-snapshots --region &lt;region&gt; --filters Name=volume-id,Values=&lt;volume-id&gt; | grep snap- | awk '{print $2}' | awk -F"\"" '{print $2}' | xargs -n 1 -t aws ec2 delete-snapshot --region &lt;region&gt; --snapshot-id
+</pre>
+
+
+<p>Notes:</p>
+<p><code>&lt;region&gt;</code>: your aws region (us-east-1 by default)</p>
+<p><code>&lt;volume-id&gt;</code>: a volume-id which was used to create snapshot</p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/convert-units-with-command-line/" class="u-url">Convert units with command line</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Tuannvm
+            </span></p>
+            <p class="dateline"><a href="posts/convert-units-with-command-line/" rel="bookmark"><time class="published dt-published" datetime="2017-02-15T13:38:55+07:00" title="2017-02-15 13:38">2017-02-15 13:38</time></a></p>
+        </div>
+    </header><div class="e-content entry-content">
+    <div>
+<p>It's fairly simple indeed.</p>
+<hr>
+<h6>Installation:</h6>
+<ul>
+<li>On Ubuntu:</li>
+</ul>
+<pre class="code literal-block"><span></span>apt-get install units
+</pre>
+
+
+<ul>
+<li>On Mac OSX:</li>
+</ul>
+<pre class="code literal-block"><span></span>brew install gnu-units
+</pre>
+
+
+<hr>
+<h6>Example:</h6>
+<p>1024 bytes to MB</p>
+<blockquote>
+<p>Ubuntu</p>
+</blockquote>
+<p><code>units -v 1024byte megabyte</code></p>
+<blockquote>
+<p>Mac OSX</p>
+</blockquote>
+<p><code>gunits -v 1024byte megabyte</code></p>
+<blockquote>
+<p>And the result:</p>
+</blockquote>
+<pre class="code literal-block"><span></span>1024byte = 0.001024 megabyte
+1024byte = (1 / 976.5625) megabyte
+</pre>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/how-to-compile-python-with-custom-openssl-version/" class="u-url">How to compile python with custom OpenSSL version</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Tuannvm

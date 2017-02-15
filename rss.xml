@@ -1,5 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Tuannvm's Blogs</title><link>https://blog.tuannvm.com/</link><description>Tech Blogs</description><atom:link href="https://blog.tuannvm.com/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 15 Feb 2017 06:37:05 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>How to compile python with custom OpenSSL version</title><link>https://blog.tuannvm.com/posts/how-to-compile-python-with-custom-openssl-version/</link><dc:creator>Tuannvm</dc:creator><description>&lt;div&gt;&lt;h2&gt;How to compile python with custom OpenSSL version&lt;/h2&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Tuannvm's Blogs</title><link>https://blog.tuannvm.com/</link><description>Tech Blogs</description><atom:link href="https://blog.tuannvm.com/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 15 Feb 2017 06:40:32 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Delete old EBS snaphot</title><link>https://blog.tuannvm.com/posts/delete-old-ebs-snaphot/</link><dc:creator>Tuannvm</dc:creator><description>&lt;div&gt;&lt;p&gt;First, you need to configure your aws credentials&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;aws configure --profile &amp;lt;your-profile-name&amp;gt;
+AWS Access Key ID [None]: xxxxxxx
+AWS Secret Access Key [None]: xxxxxx
+Default region name [None]: xxxxxx
+Default output format [None]: xxxxx
+&lt;/pre&gt;
+
+
+&lt;p&gt;Next step will be selecting the just-created aws profile:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;export AWS_PROFILE=&amp;lt;your-profile-name&amp;gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;Then we're ready to proceed:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;aws ec2 describe-snapshots --region &amp;lt;region&amp;gt; --filters Name=volume-id,Values=&amp;lt;volume-id&amp;gt; | grep snap- | awk '{print $2}' | awk -F"\"" '{print $2}' | xargs -n 1 -t aws ec2 delete-snapshot --region &amp;lt;region&amp;gt; --snapshot-id
+&lt;/pre&gt;
+
+
+&lt;p&gt;Notes:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;region&amp;gt;&lt;/code&gt;: your aws region (us-east-1 by default)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;volume-id&amp;gt;&lt;/code&gt;: a volume-id which was used to create snapshot&lt;/p&gt;&lt;/div&gt;</description><guid>https://blog.tuannvm.com/posts/delete-old-ebs-snaphot/</guid><pubDate>Wed, 15 Feb 2017 06:39:53 GMT</pubDate></item><item><title>Convert units with command line</title><link>https://blog.tuannvm.com/posts/convert-units-with-command-line/</link><dc:creator>Tuannvm</dc:creator><description>&lt;div&gt;&lt;p&gt;It's fairly simple indeed.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h6&gt;Installation:&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;On Ubuntu:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;apt-get install units
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;On Mac OSX:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;brew install gnu-units
+&lt;/pre&gt;
+
+
+&lt;hr&gt;
+&lt;h6&gt;Example:&lt;/h6&gt;
+&lt;p&gt;1024 bytes to MB&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ubuntu&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;units -v 1024byte megabyte&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Mac OSX&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;gunits -v 1024byte megabyte&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;And the result:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;1024byte = 0.001024 megabyte
+1024byte = (1 / 976.5625) megabyte
+&lt;/pre&gt;&lt;/div&gt;</description><guid>https://blog.tuannvm.com/posts/convert-units-with-command-line/</guid><pubDate>Wed, 15 Feb 2017 06:38:55 GMT</pubDate></item><item><title>How to compile python with custom OpenSSL version</title><link>https://blog.tuannvm.com/posts/how-to-compile-python-with-custom-openssl-version/</link><dc:creator>Tuannvm</dc:creator><description>&lt;div&gt;&lt;h2&gt;How to compile python with custom OpenSSL version&lt;/h2&gt;
 &lt;h4&gt;Introduction&lt;/h4&gt;
 &lt;p&gt;There's a chance your &lt;code&gt;OpenSSL&lt;/code&gt; or &lt;code&gt;Python&lt;/code&gt; installation is so old but it can not be updated via casual way by using &lt;strong&gt;apt-get&lt;/strong&gt; / &lt;strong&gt;yum&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;In that case, &lt;em&gt;compiling from source&lt;/em&gt; is the only option to upgrade these to latest version.&lt;/p&gt;
