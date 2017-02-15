@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://blog.tuannvm.com/</loc>
-  <lastmod>2017-02-15T07:06:00Z</lastmod>
+  <lastmod>2017-02-15T07:07:00Z</lastmod>
  </url>
  <url>
   <loc>https://blog.tuannvm.com/2017/</loc>
@@ -42,15 +42,7 @@
   <lastmod>2017-02-15T06:25:00Z</lastmod>
  </url>
  <url>
-  <loc>https://blog.tuannvm.com/posts/convert-units-with-command-line/</loc>
-  <lastmod>2017-02-15T06:40:00Z</lastmod>
- </url>
- <url>
-  <loc>https://blog.tuannvm.com/posts/delete-old-ebs-snaphot/</loc>
-  <lastmod>2017-02-15T06:40:00Z</lastmod>
- </url>
- <url>
-  <loc>https://blog.tuannvm.com/posts/how-to-compile-python-with-custom-openssl-version/</loc>
-  <lastmod>2017-02-15T06:37:00Z</lastmod>
+  <loc>https://blog.tuannvm.com/pages/convert-units-with-command-line/</loc>
+  <lastmod>2017-02-15T07:07:00Z</lastmod>
  </url>
 </urlset>
