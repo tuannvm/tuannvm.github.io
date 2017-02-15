@@ -3,7 +3,7 @@
 .. slug: how-to-compile-python-with-custom-openssl-version
 .. date: 2017-02-15 13:34:51 UTC+07:00
 .. tags: 
-.. category: 
+.. category: blogs
 .. link: 
 .. description: 
 .. type: text

@@ -3,7 +3,7 @@
 .. slug: delete-old-ebs-snaphot
 .. date: 2017-02-15 13:39:53 UTC+07:00
 .. tags: 
-.. category: 
+.. category: blogs
 .. link: 
 .. description: 
 .. type: text
