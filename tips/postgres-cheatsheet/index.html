@@ -18,9 +18,7 @@
 <meta property="og:site_name" content="Tuannvm's Blogs">
 <meta property="og:title" content="Postgres cheatsheet">
 <meta property="og:url" content="https://blog.tuannvm.com/tips/postgres-cheatsheet/">
-<meta property="og:description" content="!
-
-A list of query scenarios which might be helpful in some cases.
+<meta property="og:description" content="A list of query scenarios which might be helpful in some cases.
 Table of Contents
 
 Sample schema
@@ -34,7 +32,7 @@ CREATE TABLE
 INSERT
 AUTO INCREMENT
 SERIAL
-">
+IND">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2017-02-15T14:48:55+07:00">
 </head>
@@ -103,8 +101,7 @@ SERIAL
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
-<p>!
-<a href="https://www.carnaghan.com/wp-content/uploads/2016/08/postgresql-logo.png"></a></p>
+<p><img alt="" src="https://www.carnaghan.com/wp-content/uploads/2016/08/postgresql-logo.png"></p>
 <p>A list of query scenarios which might be helpful in some cases.</p>
 <h2>Table of Contents</h2>
 <ol>
@@ -123,13 +120,13 @@ SERIAL
 <li><a href="#drop">DROP</a></li>
 <li><a href="#view">VIEW</a></li>
 <li><a href="#built&amp;#45;in-functions">Built-in functions</a></li>
-<li>
-<p><a href="#nested-select">Nested select</a></p>
-</li>
+<li><a href="#nested-select">Nested select</a></li>
+</ol>
+<!-- TEASER_END: Read more --><ul>
 <li>
 <h4>Sample schema:</h4>
 </li>
-</ol>
+</ul>
 <pre class="code literal-block"><span></span><span class="c1">-- orders.customer_id = customers.id</span>
 <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="ss">"public"</span><span class="p">.</span><span class="ss">"orders"</span> <span class="p">(</span>
 <span class="ss">"customer_id"</span> <span class="n">int4</span><span class="p">,</span>
