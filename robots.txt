@@ -1,4 +1,4 @@
-Sitemap: https://blog.tuannvm.com/sitemapindex.xml
+Sitemap: https://tuannvm.github.io/sitemapindex.xml
 
 User-Agent: *
-Host: blog.tuannvm.com
+Host: tuannvm.github.io

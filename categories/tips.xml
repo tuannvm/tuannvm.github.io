@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Tuannvm's Blogs (Posts about tips)</title><link>https://blog.tuannvm.com/</link><description></description><atom:link href="https://blog.tuannvm.com/categories/tips.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 15 Feb 2017 07:50:50 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Postgres cheatsheet</title><link>https://blog.tuannvm.com/tips/postgres-cheatsheet/</link><dc:creator>Tuannvm</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;img alt="" src="https://www.carnaghan.com/wp-content/uploads/2016/08/postgresql-logo.png"&gt;&lt;/p&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>DevOps Blog (Posts about tips)</title><link>https://tuannvm.github.io/</link><description></description><atom:link href="https://tuannvm.github.io/categories/tips.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 15 Feb 2017 08:58:05 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Postgres cheatsheet</title><link>https://tuannvm.github.io/tips/postgres-cheatsheet/</link><dc:creator>Tuan Nguyen</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;img alt="" src="https://www.carnaghan.com/wp-content/uploads/2016/08/postgresql-logo.png"&gt;&lt;/p&gt;
 &lt;p&gt;A list of query scenarios which might be helpful in some cases.&lt;/p&gt;
 &lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/#sample-schemas"&gt;Sample schema&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/#update"&gt;UPDATE&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/#delete"&gt;DELETE&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/#wildcard"&gt;WILDCARD&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/#join"&gt;JOIN&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/sum-group-by-count"&gt;SUM, GROUP BY, COUNT&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/#order-by"&gt;ORDER BY&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/#create-table"&gt;CREATE TABLE&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/#insert"&gt;INSERT&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/#auto-increment"&gt;AUTO INCREMENT&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/#serial"&gt;SERIAL&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/#index"&gt;INDEX&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/#drop"&gt;DROP&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/#view"&gt;VIEW&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/#built&amp;amp;#45;in-functions"&gt;Built-in functions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/#nested-select"&gt;Nested select&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/#sample-schemas"&gt;Sample schema&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/#update"&gt;UPDATE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/#delete"&gt;DELETE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/#wildcard"&gt;WILDCARD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/#join"&gt;JOIN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/sum-group-by-count"&gt;SUM, GROUP BY, COUNT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/#order-by"&gt;ORDER BY&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/#create-table"&gt;CREATE TABLE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/#insert"&gt;INSERT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/#auto-increment"&gt;AUTO INCREMENT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/#serial"&gt;SERIAL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/#index"&gt;INDEX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/#drop"&gt;DROP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/#view"&gt;VIEW&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/#built&amp;amp;#45;in-functions"&gt;Built-in functions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/#nested-select"&gt;Nested select&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;a href="https://blog.tuannvm.com/tips/postgres-cheatsheet/"&gt; Read more …&lt;/a&gt; (5 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><guid>https://blog.tuannvm.com/tips/postgres-cheatsheet/</guid><pubDate>Wed, 15 Feb 2017 07:48:55 GMT</pubDate></item></channel></rss>
+&lt;p&gt;&lt;a href="https://tuannvm.github.io/tips/postgres-cheatsheet/"&gt; Read more …&lt;/a&gt; (5 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><guid>https://tuannvm.github.io/tips/postgres-cheatsheet/</guid><pubDate>Wed, 15 Feb 2017 07:48:55 GMT</pubDate></item></channel></rss>
