@@ -1,2 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Tuannvm's Blogs</title><link>https://blog.tuannvm.com/</link><description>Tech Blogs</description><atom:link href="https://blog.tuannvm.com/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 15 Feb 2017 06:25:03 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs></channel></rss>
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Tuannvm's Blogs</title><link>https://blog.tuannvm.com/</link><description>Tech Blogs</description><atom:link href="https://blog.tuannvm.com/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Wed, 15 Feb 2017 06:37:05 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>How to compile python with custom OpenSSL version</title><link>https://blog.tuannvm.com/posts/how-to-compile-python-with-custom-openssl-version/</link><dc:creator>Tuannvm</dc:creator><description>&lt;div&gt;&lt;h2&gt;How to compile python with custom OpenSSL version&lt;/h2&gt;
+&lt;h4&gt;Introduction&lt;/h4&gt;
+&lt;p&gt;There's a chance your &lt;code&gt;OpenSSL&lt;/code&gt; or &lt;code&gt;Python&lt;/code&gt; installation is so old but it can not be updated via casual way by using &lt;strong&gt;apt-get&lt;/strong&gt; / &lt;strong&gt;yum&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In that case, &lt;em&gt;compiling from source&lt;/em&gt; is the only option to upgrade these to latest version.&lt;/p&gt;
+&lt;p&gt;This tutorial will guide you through steps need to do to complete the above task.&lt;/p&gt;
+&lt;h4&gt;Compile OpenSSL&lt;/h4&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;cd /tmp
+curl https://www.openssl.org/source/openssl-1.0.2k.tar.gz | tar zxvf -
+cd openssl-1.0.2k
+./config shared --prefix=/usr/local/ssl
+make &amp;amp;&amp;amp; make install
+&lt;/pre&gt;
+
+
+&lt;h4&gt;Compile Python&lt;/h4&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;cd /tmp
+wget http://python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz
+tar xf Python-2.7.13.tar.xz
+cd Python-2.7.13/
+&lt;/pre&gt;
+
+
+&lt;p&gt;Edit the file &lt;code&gt;Modules/Setup.dist&lt;/code&gt; - line &lt;code&gt;218 - 221&lt;/code&gt;&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Socket module helper for SSL support; you must comment out the other&lt;/span&gt;
+&lt;span class="c1"&gt;# socket line above, and possibly edit the SSL variable:&lt;/span&gt;
+&lt;span class="nv"&gt;SSL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/local/ssl
+_ssl _ssl.c &lt;span class="se"&gt;\&lt;/span&gt;
+-DUSE_SSL -I&lt;span class="k"&gt;$(&lt;/span&gt;SSL&lt;span class="k"&gt;)&lt;/span&gt;/include -I&lt;span class="k"&gt;$(&lt;/span&gt;SSL&lt;span class="k"&gt;)&lt;/span&gt;/include/openssl &lt;span class="se"&gt;\&lt;/span&gt;
+-L&lt;span class="k"&gt;$(&lt;/span&gt;SSL&lt;span class="k"&gt;)&lt;/span&gt;/lib -lssl -lcrypto
+&lt;/pre&gt;
+
+
+&lt;p&gt;Continue with:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;./configure --prefix=/usr/local/python2.7.13 --enable-unicode=ucs4 --enable-shared
+&lt;/pre&gt;
+
+
+&lt;p&gt;Make symbolic links for custom OpenSSL libraries&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;ln -s /usr/local/ssl/lib/libssl.so.1.0.0 /usr/lib64/libssl.so.1.0.0
+ln -s /usr/local/ssl/lib/libcrypto.so.1.0.0 /usr/lib64/libcrypto.so.1.0.0
+&lt;/pre&gt;
+
+
+&lt;p&gt;Finally:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;make &amp;amp;&amp;amp; make install
+&lt;/pre&gt;
+
+
+&lt;h4&gt;Testing &amp;amp; Create virtualenv based on custom python version&lt;/h4&gt;
+&lt;p&gt;Run the following lines:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;python2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;7.13&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="s2"&gt;"import ssl; print ssl.OPENSSL_VERSION"&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;Result:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;OpenSSL 1.0.2k 26 Jan 2017
+&lt;/pre&gt;
+
+
+&lt;p&gt;Yay!&lt;/p&gt;
+&lt;p&gt;Now try to create virtualenv&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;virtualenv -p /usr/local/python2.7.13/bin/python venv
+&lt;/pre&gt;
+
+
+&lt;p&gt;Test one more time&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="nd"&gt;@localhost&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="s2"&gt;"import ssl; print ssl.OPENSSL_VERSION"&lt;/span&gt;
+&lt;span class="n"&gt;OpenSSL&lt;/span&gt; &lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="mi"&gt;26&lt;/span&gt; &lt;span class="n"&gt;Jan&lt;/span&gt; &lt;span class="mi"&gt;2017&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><guid>https://blog.tuannvm.com/posts/how-to-compile-python-with-custom-openssl-version/</guid><pubDate>Wed, 15 Feb 2017 06:34:51 GMT</pubDate></item></channel></rss>

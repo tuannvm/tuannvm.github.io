@@ -7,11 +7,15 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://blog.tuannvm.com/</loc>
-  <lastmod>2017-02-15T06:25:00Z</lastmod>
+  <lastmod>2017-02-15T06:37:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://blog.tuannvm.com/2017/</loc>
+  <lastmod>2017-02-15T06:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://blog.tuannvm.com/archive.html</loc>
-  <lastmod>2017-02-15T06:25:00Z</lastmod>
+  <lastmod>2017-02-15T06:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://blog.tuannvm.com/categories/</loc>
@@ -24,5 +28,9 @@
  <url>
   <loc>https://blog.tuannvm.com/listings/</loc>
   <lastmod>2017-02-15T06:25:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://blog.tuannvm.com/posts/how-to-compile-python-with-custom-openssl-version/</loc>
+  <lastmod>2017-02-15T06:37:00Z</lastmod>
  </url>
 </urlset>
