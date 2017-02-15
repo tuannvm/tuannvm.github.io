@@ -2,20 +2,18 @@
 <html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="Tech Blogs">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tuannvm's Blogs</title>
-<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="assets/css/rst.css" rel="stylesheet" type="text/css">
-<link href="assets/css/code.css" rel="stylesheet" type="text/css">
-<link href="assets/css/colorbox.css" rel="stylesheet" type="text/css">
-<link href="assets/css/theme.css" rel="stylesheet" type="text/css">
+<title>Tips | Tuannvm's Blogs</title>
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
-<link rel="canonical" href="https://blog.tuannvm.com/">
-<link rel="next" href="index-1.html" type="text/html">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="tips/postgres-cheatsheet/" type="text/html">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="https://blog.tuannvm.com/tips/">
+<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -40,13 +38,13 @@
         <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
             <ul class="nav navbar-nav">
 <li>
-<a href="categories/blogs/">Blogs</a>
+<a href="../categories/blogs/">Blogs</a>
                 </li>
 <li>
-<a href="categories/tips/">Tips</a>
+<a href="../categories/tips/">Tips</a>
                 </li>
 <li>
-<a href="pages/about-me/">About Me</a>
+<a href="../pages/about-me/">About Me</a>
 
                 
             </li>
@@ -68,15 +66,15 @@
         <div class="row">
             
             
-
-    
-<div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="tips/postgres-cheatsheet/" class="u-url">Postgres cheatsheet</a></h1>
+<div class="sectionindex">
+    <header><h2><a href=".">Tips</a></h2>
+    </header><div class="postindex">
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="postgres-cheatsheet/" class="u-url">Postgres cheatsheet</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Tuannvm
             </span></p>
-            <p class="dateline"><a href="tips/postgres-cheatsheet/" rel="bookmark"><time class="published dt-published" datetime="2017-02-15T14:48:55+07:00" title="2017-02-15 14:48">2017-02-15 14:48</time></a></p>
+            <p class="dateline"><a href="postgres-cheatsheet/" rel="bookmark"><time class="published dt-published" datetime="2017-02-15T14:48:55+07:00" title="2017-02-15 14:48">2017-02-15 14:48</time></a></p>
         </div>
     </header><div class="p-summary entry-summary">
     <div>
@@ -85,23 +83,23 @@
 <p>A list of query scenarios which might be helpful in some cases.</p>
 <h2>Table of Contents</h2>
 <ol>
-<li><a href="tips/postgres-cheatsheet/#sample-schemas">Sample schema</a></li>
-<li><a href="tips/postgres-cheatsheet/#update">UPDATE</a></li>
-<li><a href="tips/postgres-cheatsheet/#delete">DELETE</a></li>
-<li><a href="tips/postgres-cheatsheet/#wildcard">WILDCARD</a></li>
-<li><a href="tips/postgres-cheatsheet/#join">JOIN</a></li>
-<li><a href="tips/postgres-cheatsheet/sum-group-by-count">SUM, GROUP BY, COUNT</a></li>
-<li><a href="tips/postgres-cheatsheet/#order-by">ORDER BY</a></li>
-<li><a href="tips/postgres-cheatsheet/#create-table">CREATE TABLE</a></li>
-<li><a href="tips/postgres-cheatsheet/#insert">INSERT</a></li>
-<li><a href="tips/postgres-cheatsheet/#auto-increment">AUTO INCREMENT</a></li>
-<li><a href="tips/postgres-cheatsheet/#serial">SERIAL</a></li>
-<li><a href="tips/postgres-cheatsheet/#index">INDEX</a></li>
-<li><a href="tips/postgres-cheatsheet/#drop">DROP</a></li>
-<li><a href="tips/postgres-cheatsheet/#view">VIEW</a></li>
-<li><a href="tips/postgres-cheatsheet/#built&amp;#45;in-functions">Built-in functions</a></li>
+<li><a href="postgres-cheatsheet/#sample-schemas">Sample schema</a></li>
+<li><a href="postgres-cheatsheet/#update">UPDATE</a></li>
+<li><a href="postgres-cheatsheet/#delete">DELETE</a></li>
+<li><a href="postgres-cheatsheet/#wildcard">WILDCARD</a></li>
+<li><a href="postgres-cheatsheet/#join">JOIN</a></li>
+<li><a href="postgres-cheatsheet/sum-group-by-count">SUM, GROUP BY, COUNT</a></li>
+<li><a href="postgres-cheatsheet/#order-by">ORDER BY</a></li>
+<li><a href="postgres-cheatsheet/#create-table">CREATE TABLE</a></li>
+<li><a href="postgres-cheatsheet/#insert">INSERT</a></li>
+<li><a href="postgres-cheatsheet/#auto-increment">AUTO INCREMENT</a></li>
+<li><a href="postgres-cheatsheet/#serial">SERIAL</a></li>
+<li><a href="postgres-cheatsheet/#index">INDEX</a></li>
+<li><a href="postgres-cheatsheet/#drop">DROP</a></li>
+<li><a href="postgres-cheatsheet/#view">VIEW</a></li>
+<li><a href="postgres-cheatsheet/#built&amp;#45;in-functions">Built-in functions</a></li>
 <li>
-<p><a href="tips/postgres-cheatsheet/#nested-select">Nested select</a></p>
+<p><a href="postgres-cheatsheet/#nested-select">Nested select</a></p>
 </li>
 <li>
 <h4>Sample schema:</h4>
@@ -408,41 +406,18 @@
 </pre>
 </div>
     </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="blogs/delete-old-ebs-snaphot/" class="u-url">Delete old EBS snaphot</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                Tuannvm
-            </span></p>
-            <p class="dateline"><a href="blogs/delete-old-ebs-snaphot/" rel="bookmark"><time class="published dt-published" datetime="2017-02-15T13:39:53+07:00" title="2017-02-15 13:39">2017-02-15 13:39</time></a></p>
-        </div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>First, you need to configure your aws credentials</p>
-<p class="more"><a href="blogs/delete-old-ebs-snaphot/">Read more…</a></p>
-</div>
-    </div>
-    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="blogs/convert-units-with-command-line/" class="u-url">Convert units with command line</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
-                Tuannvm
-            </span></p>
-            <p class="dateline"><a href="blogs/convert-units-with-command-line/" rel="bookmark"><time class="published dt-published" datetime="2017-02-15T13:38:55+07:00" title="2017-02-15 13:38">2017-02-15 13:38</time></a></p>
-        </div>
-    </header><div class="p-summary entry-summary">
-    <div>
-<p>It's fairly simple indeed.</p>
-<p class="more"><a href="blogs/convert-units-with-command-line/"> Read more …</a></p>
-</div>
-    </div>
     </article>
 </div>
 
-        <nav class="postindexpager"><ul class="pager">
-<li class="next">
-                <a href="index-1.html" rel="next">Older posts</a>
-            </li>
-        </ul></nav>
+
+
+
+
+
+
 </div>
+
+        </div>
         <!--End of body content-->
 
         <footer id="footer">
@@ -453,7 +428,7 @@
 </div>
 
 
-            <script src="assets/js/jquery.min.js"></script><script src="assets/js/bootstrap.min.js"></script><script src="assets/js/moment-with-locales.min.js"></script><script src="assets/js/fancydates.js"></script><script src="assets/js/jquery.colorbox-min.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/moment-with-locales.min.js"></script><script src="../assets/js/fancydates.js"></script><script src="../assets/js/jquery.colorbox-min.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates -->

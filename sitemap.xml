@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://blog.tuannvm.com/</loc>
-  <lastmod>2017-02-15T07:07:00Z</lastmod>
+  <lastmod>2017-02-15T07:49:00Z</lastmod>
  </url>
  <url>
   <loc>https://blog.tuannvm.com/2017/</loc>
@@ -15,31 +15,43 @@
  </url>
  <url>
   <loc>https://blog.tuannvm.com/archive.html</loc>
-  <lastmod>2017-02-15T07:45:00Z</lastmod>
+  <lastmod>2017-02-15T07:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://blog.tuannvm.com/blogs/</loc>
+  <lastmod>2017-02-15T07:49:00Z</lastmod>
  </url>
  <url>
   <loc>https://blog.tuannvm.com/blogs/convert-units-with-command-line/</loc>
-  <lastmod>2017-02-15T07:06:00Z</lastmod>
+  <lastmod>2017-02-15T07:45:00Z</lastmod>
  </url>
  <url>
   <loc>https://blog.tuannvm.com/blogs/delete-old-ebs-snaphot/</loc>
-  <lastmod>2017-02-15T07:06:00Z</lastmod>
+  <lastmod>2017-02-15T07:45:00Z</lastmod>
  </url>
  <url>
   <loc>https://blog.tuannvm.com/blogs/how-to-compile-python-with-custom-openssl-version/</loc>
-  <lastmod>2017-02-15T07:06:00Z</lastmod>
+  <lastmod>2017-02-15T07:45:00Z</lastmod>
  </url>
  <url>
   <loc>https://blog.tuannvm.com/categories/</loc>
-  <lastmod>2017-02-15T07:17:00Z</lastmod>
+  <lastmod>2017-02-15T07:49:00Z</lastmod>
  </url>
  <url>
   <loc>https://blog.tuannvm.com/categories/blogs/</loc>
   <lastmod>2017-02-15T07:17:00Z</lastmod>
  </url>
  <url>
+  <loc>https://blog.tuannvm.com/categories/tips/</loc>
+  <lastmod>2017-02-15T07:49:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://blog.tuannvm.com/galleries/</loc>
   <lastmod>2017-02-15T06:25:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://blog.tuannvm.com/index-1.html</loc>
+  <lastmod>2017-02-15T07:49:00Z</lastmod>
  </url>
  <url>
   <loc>https://blog.tuannvm.com/listings/</loc>
@@ -47,6 +59,14 @@
  </url>
  <url>
   <loc>https://blog.tuannvm.com/pages/about-me/</loc>
-  <lastmod>2017-02-15T07:23:00Z</lastmod>
+  <lastmod>2017-02-15T07:45:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://blog.tuannvm.com/tips/</loc>
+  <lastmod>2017-02-15T07:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://blog.tuannvm.com/tips/postgres-cheatsheet/</loc>
+  <lastmod>2017-02-15T07:49:00Z</lastmod>
  </url>
 </urlset>
