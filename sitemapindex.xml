@@ -6,8 +6,12 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
+  <loc>https://blog.tuannvm.com/categories/blogs.xml</loc>
+  <lastmod>2017-02-15T07:17:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://blog.tuannvm.com/categories/cat_blogs.xml</loc>
-  <lastmod>2017-02-15T07:12:00Z</lastmod>
+  <lastmod>2017-02-15T07:13:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://blog.tuannvm.com/galleries/rss.xml</loc>
@@ -19,6 +23,6 @@
  </sitemap>
  <sitemap>
   <loc>https://blog.tuannvm.com/sitemap.xml</loc>
-  <lastmod>2017-02-15T07:12:00Z</lastmod>
+  <lastmod>2017-02-15T07:17:00Z</lastmod>
  </sitemap>
 </sitemapindex>
