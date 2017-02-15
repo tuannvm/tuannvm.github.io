@@ -9,8 +9,6 @@
 .. type: text
 -->
 
-# How to compile python with custom OpenSSL version
-
 ### Introduction
 
 There's a chance your `OpenSSL` or `Python` installation is so old but it can not be updated via casual way by using **apt-get** / **yum**
