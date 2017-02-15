@@ -71,32 +71,10 @@
             </span></p>
             <p class="dateline"><a href="posts/delete-old-ebs-snaphot/" rel="bookmark"><time class="published dt-published" datetime="2017-02-15T13:39:53+07:00" title="2017-02-15 13:39">2017-02-15 13:39</time></a></p>
         </div>
-    </header><div class="e-content entry-content">
+    </header><div class="p-summary entry-summary">
     <div>
 <p>First, you need to configure your aws credentials</p>
-<!-- TEASER_END -->
-
-<pre class="code literal-block"><span></span>aws configure --profile &lt;your-profile-name&gt;
-AWS Access Key ID [None]: xxxxxxx
-AWS Secret Access Key [None]: xxxxxx
-Default region name [None]: xxxxxx
-Default output format [None]: xxxxx
-</pre>
-
-
-<p>Next step will be selecting the just-created aws profile:</p>
-<pre class="code literal-block"><span></span>export AWS_PROFILE=&lt;your-profile-name&gt;
-</pre>
-
-
-<p>Then we're ready to proceed:</p>
-<pre class="code literal-block"><span></span>aws ec2 describe-snapshots --region &lt;region&gt; --filters Name=volume-id,Values=&lt;volume-id&gt; | grep snap- | awk '{print $2}' | awk -F"\"" '{print $2}' | xargs -n 1 -t aws ec2 delete-snapshot --region &lt;region&gt; --snapshot-id
-</pre>
-
-
-<p>Notes:</p>
-<p><code>&lt;region&gt;</code>: your aws region (us-east-1 by default)</p>
-<p><code>&lt;volume-id&gt;</code>: a volume-id which was used to create snapshot</p>
+<p class="more"><a href="posts/delete-old-ebs-snaphot/">Read more…</a></p>
 </div>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/convert-units-with-command-line/" class="u-url">Convert units with command line</a></h1>
@@ -106,44 +84,10 @@ Default output format [None]: xxxxx
             </span></p>
             <p class="dateline"><a href="posts/convert-units-with-command-line/" rel="bookmark"><time class="published dt-published" datetime="2017-02-15T13:38:55+07:00" title="2017-02-15 13:38">2017-02-15 13:38</time></a></p>
         </div>
-    </header><div class="e-content entry-content">
+    </header><div class="p-summary entry-summary">
     <div>
 <p>It's fairly simple indeed.</p>
-<!-- TEASER_END: Read more -->
-
-<hr>
-<h6>Installation:</h6>
-<ul>
-<li>On Ubuntu:</li>
-</ul>
-<pre class="code literal-block"><span></span>apt-get install units
-</pre>
-
-
-<ul>
-<li>On Mac OSX:</li>
-</ul>
-<pre class="code literal-block"><span></span>brew install gnu-units
-</pre>
-
-
-<hr>
-<h6>Example:</h6>
-<p>1024 bytes to MB</p>
-<blockquote>
-<p>Ubuntu</p>
-</blockquote>
-<p><code>units -v 1024byte megabyte</code></p>
-<blockquote>
-<p>Mac OSX</p>
-</blockquote>
-<p><code>gunits -v 1024byte megabyte</code></p>
-<blockquote>
-<p>And the result:</p>
-</blockquote>
-<pre class="code literal-block"><span></span>1024byte = 0.001024 megabyte
-1024byte = (1 / 976.5625) megabyte
-</pre>
+<p class="more"><a href="posts/convert-units-with-command-line/"> Read more …</a></p>
 </div>
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/how-to-compile-python-with-custom-openssl-version/" class="u-url">How to compile python with custom OpenSSL version</a></h1>
@@ -153,79 +97,14 @@ Default output format [None]: xxxxx
             </span></p>
             <p class="dateline"><a href="posts/how-to-compile-python-with-custom-openssl-version/" rel="bookmark"><time class="published dt-published" datetime="2017-02-15T13:34:51+07:00" title="2017-02-15 13:34">2017-02-15 13:34</time></a></p>
         </div>
-    </header><div class="e-content entry-content">
+    </header><div class="p-summary entry-summary">
     <div>
 <h2>How to compile python with custom OpenSSL version</h2>
 <h4>Introduction</h4>
 <p>There's a chance your <code>OpenSSL</code> or <code>Python</code> installation is so old but it can not be updated via casual way by using <strong>apt-get</strong> / <strong>yum</strong></p>
 <p>In that case, <em>compiling from source</em> is the only option to upgrade these to latest version.</p>
 <p>This tutorial will guide you through steps need to do to complete the above task.</p>
-<!-- TEASER_END: Read more -->
-
-<h4>Compile OpenSSL</h4>
-<pre class="code literal-block"><span></span>cd /tmp
-curl https://www.openssl.org/source/openssl-1.0.2k.tar.gz | tar zxvf -
-cd openssl-1.0.2k
-./config shared --prefix=/usr/local/ssl
-make &amp;&amp; make install
-</pre>
-
-
-<h4>Compile Python</h4>
-<pre class="code literal-block"><span></span>cd /tmp
-wget http://python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz
-tar xf Python-2.7.13.tar.xz
-cd Python-2.7.13/
-</pre>
-
-
-<p>Edit the file <code>Modules/Setup.dist</code> - line <code>218 - 221</code></p>
-<pre class="code literal-block"><span></span><span class="c1"># Socket module helper for SSL support; you must comment out the other</span>
-<span class="c1"># socket line above, and possibly edit the SSL variable:</span>
-<span class="nv">SSL</span><span class="o">=</span>/usr/local/ssl
-_ssl _ssl.c <span class="se">\</span>
--DUSE_SSL -I<span class="k">$(</span>SSL<span class="k">)</span>/include -I<span class="k">$(</span>SSL<span class="k">)</span>/include/openssl <span class="se">\</span>
--L<span class="k">$(</span>SSL<span class="k">)</span>/lib -lssl -lcrypto
-</pre>
-
-
-<p>Continue with:</p>
-<pre class="code literal-block"><span></span>./configure --prefix=/usr/local/python2.7.13 --enable-unicode=ucs4 --enable-shared
-</pre>
-
-
-<p>Make symbolic links for custom OpenSSL libraries</p>
-<pre class="code literal-block"><span></span>ln -s /usr/local/ssl/lib/libssl.so.1.0.0 /usr/lib64/libssl.so.1.0.0
-ln -s /usr/local/ssl/lib/libcrypto.so.1.0.0 /usr/lib64/libcrypto.so.1.0.0
-</pre>
-
-
-<p>Finally:</p>
-<pre class="code literal-block"><span></span>make &amp;&amp; make install
-</pre>
-
-
-<h4>Testing &amp; Create virtualenv based on custom python version</h4>
-<p>Run the following lines:</p>
-<pre class="code literal-block"><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">python2</span><span class="o">.</span><span class="mf">7.13</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"import ssl; print ssl.OPENSSL_VERSION"</span>
-</pre>
-
-
-<p>Result:</p>
-<pre class="code literal-block"><span></span>OpenSSL 1.0.2k 26 Jan 2017
-</pre>
-
-
-<p>Yay!</p>
-<p>Now try to create virtualenv</p>
-<pre class="code literal-block"><span></span>virtualenv -p /usr/local/python2.7.13/bin/python venv
-</pre>
-
-
-<p>Test one more time</p>
-<pre class="code literal-block"><span></span><span class="p">(</span><span class="n">venv</span><span class="p">)[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">/</span><span class="p">]</span><span class="err">$</span> <span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"import ssl; print ssl.OPENSSL_VERSION"</span>
-<span class="n">OpenSSL</span> <span class="mf">1.0</span><span class="o">.</span><span class="mi">2</span><span class="n">k</span> <span class="mi">26</span> <span class="n">Jan</span> <span class="mi">2017</span>
-</pre>
+<p class="more"><a href="posts/how-to-compile-python-with-custom-openssl-version/"> Read more …</a></p>
 </div>
     </div>
     </article>
