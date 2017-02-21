@@ -69,7 +69,40 @@
 <div class="sectionindex">
     <header><h2><a href=".">Tips</a></h2>
     </header><div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="postgres-cheatsheet/" class="u-url">Postgres cheatsheet</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="fundamental-python/" class="u-url">Fundamental Python</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                Tuan Nguyen
+            </span></p>
+            <p class="dateline"><a href="fundamental-python/" rel="bookmark"><time class="published dt-published" datetime="2017-02-17T10:16:30+07:00" title="2017-02-17 10:16">2017-02-17 10:16</time></a></p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<h4>Introduction</h4>
+<h4>Loop</h4>
+<ul>
+<li>
+<h4>For</h4>
+</li>
+</ul>
+<h5>Full form</h5>
+<pre class="code literal-block"><span></span><span class="n">dataList</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">tempList</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">dataList</span><span class="p">:</span>
+    <span class="n">tempList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">elem</span><span class="p">))</span>
+</pre>
+
+
+<h5>Short form</h5>
+<pre class="code literal-block"><span></span><span class="n">tempList</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">dataList</span><span class="p">]</span>
+</pre>
+
+
+<h4>File I/O</h4>
+<p class="more"><a href="fundamental-python/"> Read more …</a></p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="postgres-cheatsheet/" class="u-url">Postgres cheatsheet</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">
                 Tuan Nguyen
@@ -79,26 +112,7 @@
     </header><div class="p-summary entry-summary">
     <div>
 <p><img alt="" src="https://www.carnaghan.com/wp-content/uploads/2016/08/postgresql-logo.png"></p>
-<p>A list of query scenarios which might be helpful in some cases.</p>
-<h2>Table of Contents</h2>
-<ol>
-<li><a href="postgres-cheatsheet/#sample-schemas">Sample schema</a></li>
-<li><a href="postgres-cheatsheet/#update">UPDATE</a></li>
-<li><a href="postgres-cheatsheet/#delete">DELETE</a></li>
-<li><a href="postgres-cheatsheet/#wildcard">WILDCARD</a></li>
-<li><a href="postgres-cheatsheet/#join">JOIN</a></li>
-<li><a href="postgres-cheatsheet/sum-group-by-count">SUM, GROUP BY, COUNT</a></li>
-<li><a href="postgres-cheatsheet/#order-by">ORDER BY</a></li>
-<li><a href="postgres-cheatsheet/#create-table">CREATE TABLE</a></li>
-<li><a href="postgres-cheatsheet/#insert">INSERT</a></li>
-<li><a href="postgres-cheatsheet/#auto-increment">AUTO INCREMENT</a></li>
-<li><a href="postgres-cheatsheet/#serial">SERIAL</a></li>
-<li><a href="postgres-cheatsheet/#index">INDEX</a></li>
-<li><a href="postgres-cheatsheet/#drop">DROP</a></li>
-<li><a href="postgres-cheatsheet/#view">VIEW</a></li>
-<li><a href="postgres-cheatsheet/#built&amp;#45;in-functions">Built-in functions</a></li>
-<li><a href="postgres-cheatsheet/#nested-select">Nested select</a></li>
-</ol>
+<p>A list of query scenarios on PostgreSQL database which might be helpful in some cases.</p>
 <p class="more"><a href="postgres-cheatsheet/"> Read more …</a></p>
 </div>
     </div>
