@@ -13,13 +13,29 @@
 <meta property="og:site_name" content="DevOps Blog">
 <meta property="og:title" content="Fundamental Python">
 <meta property="og:url" content="https://tuannvm.github.io/tips/fundamental-python/">
-<meta property="og:description" content="function rc4(key, str) {
-    var s = [], j = 0, x, res = '';
-    for (var i = 0; i &lt; 256; i++) {
-        s[i] = i;
-    }
-    for (i = 0; i &lt; 256; i++) {
-        j = (j + s[i] + key.charCodeAt(i % key.">
+<meta property="og:description" content="Introduction
+Loop
+
+
+For
+
+
+Full form
+dataList = []
+tempList = []
+for elem in dataList:
+    tempList.append(func(elem))
+
+print dataList
+
+
+
+Short form
+tempList = [func(elem) for elem in dataList]
+
+
+
+File">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2017-02-17T10:16:30+07:00">
 </head>
@@ -88,50 +104,83 @@
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
-<script>
-function rc4(key, str) {
-    var s = [], j = 0, x, res = '';
-    for (var i = 0; i < 256; i++) {
-        s[i] = i;
-    }
-    for (i = 0; i < 256; i++) {
-        j = (j + s[i] + key.charCodeAt(i % key.length)) % 256;
-        x = s[i];
-        s[i] = s[j];
-        s[j] = x;
-    }
-    i = 0;
-    j = 0;
-    for (var y = 0; y < str.length; y++) {
-        i = (i + 1) % 256;
-        j = (j + s[i]) % 256;
-        x = s[i];
-        s[i] = s[j];
-        s[j] = x;
-        res += String.fromCharCode(str.charCodeAt(y) ^ s[(s[i] + s[j]) % 256]);
-    }
-    return res;
-}
-function decrypt() {
-    key = $("#key").val();
-    crypt_div = $("#encr")
-    crypted = crypt_div.html();
-    decrypted = rc4(key, window.atob(crypted));
-    if (decrypted.substr(decrypted.length - 11) == "<!--tail-->"){
-        crypt_div.html(decrypted);
-        $("#pwform").hide();
-        crypt_div.show();
-    } else { alert("Wrong password"); };
-}
-</script><div id="encr" style="display: none;">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</div>
-<div id="pwform">
-<form onsubmit="javascript:decrypt(); return false;" class="form-inline">
-<fieldset>
-<legend>This post is password-protected.</legend>
-<input type="password" id="key" placeholder="Type password here"><button type="submit" class="btn">Show Content</button>
-</fieldset>
-</form>
-</div>
+<h4>Introduction</h4>
+<h4>Loop</h4>
+<ul>
+<li>
+<h4>For</h4>
+</li>
+</ul>
+<h5>Full form</h5>
+<pre class="code literal-block"><span></span><span class="n">dataList</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">tempList</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">dataList</span><span class="p">:</span>
+    <span class="n">tempList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">elem</span><span class="p">))</span>
+
+<span class="k">print</span> <span class="n">dataList</span>
+</pre>
+
+
+<h5>Short form</h5>
+<pre class="code literal-block"><span></span><span class="n">tempList</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">dataList</span><span class="p">]</span>
+</pre>
+
+
+<h4>File I/O</h4>
+<!-- TEASER_END: Read more -->
+
+<ul>
+<li>
+<h5>Open()</h5>
+open (\&lt;filename&gt;, \&lt;access mode&gt;)</li>
+</ul>
+<p>w
+a
+w+</p>
+<pre class="code literal-block"><span></span><span class="c1"># open file data.out in write mode</span>
+<span class="n">out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"data.out"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> 
+
+<span class="c1"># write "content" to out</span>
+<span class="k">print</span> <span class="o">&gt;&gt;</span><span class="n">out</span><span class="p">,</span> <span class="s2">"content"</span>
+
+<span class="c1"># close the file when done</span>
+<span class="n">out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre>
+
+
+<ul>
+<li>
+<h5>finally</h5>
+when you have a situation when code must always run no matter what erros occur.</li>
+</ul>
+<p>if you try to change an immutable value, Python raises a TypeError exception</p>
+<pre class="code literal-block"><span></span><span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'file.txt'</span><span class="p">)</span>
+
+<span class="c1"># using locals() to check whether data object (file.txt represent) exists or not</span>
+<span class="k">if</span> <span class="s1">'data'</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre>
+
+
+<ul>
+<li>
+<h5>with</h5>
+</li>
+</ul>
+<pre class="code literal-block"><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'file.txt'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">print</span> <span class="o">&gt;&gt;</span><span class="n">data</span><span class="p">,</span> <span class="s2">"content here"</span>
+</pre>
+
+
+<p>is equivalent to</p>
+<pre class="code literal-block"><span></span><span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'file.txt'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span>
+<span class="k">print</span> <span class="o">&gt;&gt;</span><span class="n">data</span><span class="p">,</span> <span class="s2">"content here"</span>
+<span class="n">data</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre>
+
+
+<p>without additional <code>close()</code></p>
+<p>And also, two <code>with</code> statements<code>```` can be combined with</code>comma ","`</p>
 </div>
     </div>
     <aside class="postpromonav"><nav></nav></aside></article>
