@@ -7,23 +7,23 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>https://tuannvm.github.io/blogs/rss.xml</loc>
-  <lastmod>2017-04-17T09:32:00Z</lastmod>
+  <lastmod>2017-04-17T09:34:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/categories/blogs.xml</loc>
-  <lastmod>2017-04-17T09:32:00Z</lastmod>
+  <lastmod>2017-04-17T09:34:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/categories/docker.xml</loc>
-  <lastmod>2017-04-17T09:32:00Z</lastmod>
+  <lastmod>2017-04-17T09:34:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/categories/etcd.xml</loc>
-  <lastmod>2017-04-17T09:32:00Z</lastmod>
+  <lastmod>2017-04-17T09:34:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/categories/microservice.xml</loc>
-  <lastmod>2017-04-17T09:32:00Z</lastmod>
+  <lastmod>2017-04-17T09:34:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/categories/tips.xml</loc>
@@ -31,15 +31,15 @@
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/galleries/rss.xml</loc>
-  <lastmod>2017-04-17T09:32:00Z</lastmod>
+  <lastmod>2017-04-17T10:31:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/rss.xml</loc>
-  <lastmod>2017-04-17T09:32:00Z</lastmod>
+  <lastmod>2017-04-17T09:34:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/sitemap.xml</loc>
-  <lastmod>2017-04-17T09:32:00Z</lastmod>
+  <lastmod>2017-04-17T10:31:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/tips/rss.xml</loc>
