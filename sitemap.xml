@@ -38,12 +38,20 @@
   <lastmod>2017-02-15T07:45:00Z</lastmod>
  </url>
  <url>
+  <loc>https://tuannvm.github.io/blogs/howto-connect-2-docker-compose-instances/</loc>
+  <lastmod>2017-04-17T09:32:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://tuannvm.github.io/blogs/index-1.html</loc>
-  <lastmod>2017-04-17T11:07:00Z</lastmod>
+  <lastmod>2017-04-17T11:19:00Z</lastmod>
  </url>
  <url>
   <loc>https://tuannvm.github.io/categories/</loc>
-  <lastmod>2017-04-17T09:32:00Z</lastmod>
+  <lastmod>2017-04-17T11:19:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://tuannvm.github.io/categories/aws/</loc>
+  <lastmod>2017-04-17T11:19:00Z</lastmod>
  </url>
  <url>
   <loc>https://tuannvm.github.io/categories/blogs/</loc>
@@ -51,23 +59,55 @@
  </url>
  <url>
   <loc>https://tuannvm.github.io/categories/blogs/index-1.html</loc>
-  <lastmod>2017-04-17T11:07:00Z</lastmod>
+  <lastmod>2017-04-17T11:19:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://tuannvm.github.io/categories/convert/</loc>
+  <lastmod>2017-04-17T11:19:00Z</lastmod>
  </url>
  <url>
   <loc>https://tuannvm.github.io/categories/docker/</loc>
   <lastmod>2017-04-17T09:32:00Z</lastmod>
  </url>
  <url>
+  <loc>https://tuannvm.github.io/categories/ebs/</loc>
+  <lastmod>2017-04-17T11:19:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://tuannvm.github.io/categories/etcd/</loc>
   <lastmod>2017-04-17T09:32:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://tuannvm.github.io/categories/linux/</loc>
+  <lastmod>2017-04-17T11:19:00Z</lastmod>
  </url>
  <url>
   <loc>https://tuannvm.github.io/categories/microservice/</loc>
   <lastmod>2017-04-17T09:32:00Z</lastmod>
  </url>
  <url>
+  <loc>https://tuannvm.github.io/categories/openssl/</loc>
+  <lastmod>2017-04-17T11:19:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://tuannvm.github.io/categories/python/</loc>
+  <lastmod>2017-04-17T11:19:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://tuannvm.github.io/categories/snapshot/</loc>
+  <lastmod>2017-04-17T11:19:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://tuannvm.github.io/categories/tips/</loc>
   <lastmod>2017-02-15T07:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://tuannvm.github.io/categories/unit/</loc>
+  <lastmod>2017-04-17T11:19:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://tuannvm.github.io/categories/virtualenv/</loc>
+  <lastmod>2017-04-17T11:19:00Z</lastmod>
  </url>
  <url>
   <loc>https://tuannvm.github.io/galleries/</loc>
@@ -75,7 +115,7 @@
  </url>
  <url>
   <loc>https://tuannvm.github.io/index-1.html</loc>
-  <lastmod>2017-04-17T11:07:00Z</lastmod>
+  <lastmod>2017-04-17T11:19:00Z</lastmod>
  </url>
  <url>
   <loc>https://tuannvm.github.io/listings/</loc>
