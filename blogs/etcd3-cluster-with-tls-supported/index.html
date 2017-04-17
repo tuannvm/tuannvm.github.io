@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Etcd3 cluster with TLS-supported | DevOps Blog</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://tuannvm.github.io/blogs/etcd3-cluster-with-tls-supported/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Tuan Nguyen">
+<link rel="prev" href="../../tips/postgres-cheatsheet/" title="Postgres cheatsheet" type="text/html">
+<meta property="og:site_name" content="DevOps Blog">
+<meta property="og:title" content="Etcd3 cluster with TLS-supported">
+<meta property="og:url" content="https://tuannvm.github.io/blogs/etcd3-cluster-with-tls-supported/">
+<meta property="og:description" content="Introduction
+
+Etcd, an open-source distributed key-value store, has become an integral part of many micro-services infrastructure. Kubernetes is one of the famous examples which build on top of Etcd.
+">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-04-11T15:26:43+07:00">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="etcd">
+<meta property="article:tag" content="microservice">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://tuannvm.github.io/">
+
+                <span id="blog-title">DevOps Blog</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../categories/blogs/">Blogs</a>
+                </li>
+<li>
+<a href="../../categories/tips/">Tips</a>
+                </li>
+<li>
+<a href="../../pages/about-me/">About Me</a>
+
+                
+            </li>
+</ul>
+<!-- DuckDuckGo custom search --><form method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="https://tuannvm.github.io/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Etcd3 cluster with TLS-supported</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    Tuan Nguyen
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-04-11T15:26:43+07:00" itemprop="datePublished" title="2017-04-11 15:26">2017-04-11 15:26</time></a></p>
+            
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<h4>Introduction</h4>
+<p><img alt="" src="http://sdtimes.com/wp-content/uploads/2017/01/0123.sdt-etcd.png"></p>
+<p>Etcd, an open-source distributed key-value store, has become an integral part of many micro-services infrastructure. <a href="https://kubernetes.io/">Kubernetes</a> is one of the famous examples which build on top of Etcd.</p>
+<!-- TEASER_END: Read more -->
+
+<p>Thanks to Etcd's reliability &amp; availability, many clusters can get through network failures or network partitions without losing any data.</p>
+<p>However, unencrypted HTTP requests are used to communicate between Etcd node by default, and it could be a huge security risk if your Etcd cluster currently run across the Internet.</p>
+<p>To solve that issue, TLS/SSL communication should be implemented to ensure all communication is encrypted.</p>
+<h4>Perquisites</h4>
+<p>You should be familiar with the basics of <code>etcd</code>, <code>openssl</code>, <code>docker</code>, <code>docker-compose</code> and generating a discovery URL.</p>
+<h4>Generate self-signed certificates</h4>
+<p><a href="https://github.com/cloudflare/cfssl">cfssl</a> tool would be used for this purpose along with this detailed &amp; well-explained <a href="https://coreos.com/os/docs/latest/generate-self-signed-certificates.html">document</a>.</p>
+<p>Please follow and create the following certificates &amp; keys:
+<em> ca.pem
+</em> ca-key.pem
+<em> member[1-3].pem
+</em> member[1-3]-key.pem
+<em> client.pem
+</em> client-key.pem</p>
+<p>Those keys should be kept in <code>certs/</code> directory</p>
+<h4>Generate Etcd discovery URL</h4>
+<p>Create by using this <a href="https://discovery.etcd.io/new?size=3">link</a></p>
+<p><em>Notes: size=3 means this cluster will have 3 members at max</em></p>
+<p>Write down the result, as it would be used on the next steps</p>
+<h4>Use docker-compose to create test environment</h4>
+<p>Paste and save the following into <code>docker-compose.yml</code> file</p>
+<pre class="code literal-block"><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">'2'</span>
+<span class="l l-Scalar l-Scalar-Plain">services</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">member1</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">tuannvm/docker-alpine-etcd</span>
+    <span class="l l-Scalar l-Scalar-Plain">volumes</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./certs:/srv/</span>
+    <span class="l l-Scalar l-Scalar-Plain">container_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">member1</span>
+    <span class="l l-Scalar l-Scalar-Plain">hostname</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">member1</span>
+    <span class="l l-Scalar l-Scalar-Plain">command</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sleep 86400</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">member2</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">tuannvm/docker-alpine-etcd</span>
+    <span class="l l-Scalar l-Scalar-Plain">volumes</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./certs:/srv/</span>
+    <span class="l l-Scalar l-Scalar-Plain">container_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">member2</span>
+    <span class="l l-Scalar l-Scalar-Plain">hostname</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">member2</span>
+    <span class="l l-Scalar l-Scalar-Plain">command</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sleep 86400</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">member3</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">tuannvm/docker-alpine-etcd</span>
+    <span class="l l-Scalar l-Scalar-Plain">volumes</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./certs:/srv/</span>
+    <span class="l l-Scalar l-Scalar-Plain">container_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">member3</span>
+    <span class="l l-Scalar l-Scalar-Plain">hostname</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">member3</span>
+    <span class="l l-Scalar l-Scalar-Plain">command</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sleep 86400</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">client</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">tuannvm/docker-alpine-etcd</span>
+    <span class="l l-Scalar l-Scalar-Plain">volumes</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./certs:/srv/</span>
+    <span class="l l-Scalar l-Scalar-Plain">container_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">client</span>
+    <span class="l l-Scalar l-Scalar-Plain">hostname</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">client</span>
+    <span class="l l-Scalar l-Scalar-Plain">command</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sleep 86400</span>
+</pre>
+
+
+<h4>Create Etcd cluster with command-line scripts</h4>
+<p>Access each of the <code>members</code>:</p>
+<pre class="code literal-block"><span></span>docker <span class="nb">exec</span> -it member<span class="o">[</span><span class="m">1</span>-3<span class="o">]</span> sh
+</pre>
+
+
+<p>Paste &amp; run the following commands:</p>
+<pre class="code literal-block"><span></span><span class="nb">export</span> <span class="nv">DISCOVERY_URL</span><span class="o">=</span>&lt;the-discovery-URL-created-above&gt;
+<span class="nb">export</span> <span class="nv">NAME</span><span class="o">=</span><span class="sb">`</span>hostname<span class="sb">`</span>
+<span class="nb">export</span> <span class="nv">IP</span><span class="o">=</span><span class="sb">`</span>ip addr <span class="p">|</span> grep inet <span class="p">|</span> grep -v <span class="m">127</span> <span class="p">|</span> cut -d<span class="s2">" "</span> -f6 <span class="p">|</span> cut -d<span class="s2">"/"</span> -f1<span class="sb">`</span>
+
+etcd --name <span class="si">${</span><span class="nv">NAME</span><span class="si">}</span> --data-dir /home/<span class="si">${</span><span class="nv">NAME</span><span class="si">}</span> <span class="se">\</span>
+--client-cert-auth --trusted-ca-file<span class="o">=</span>/srv/ca.pem --cert-file<span class="o">=</span>/srv/<span class="si">${</span><span class="nv">NAME</span><span class="si">}</span>.pem --key-file<span class="o">=</span>/srv/<span class="si">${</span><span class="nv">NAME</span><span class="si">}</span>-key.pem <span class="se">\ </span>
+  --peer-client-cert-auth --peer-trusted-ca-file<span class="o">=</span>/srv/ca.pem --peer-cert-file<span class="o">=</span>/srv/<span class="si">${</span><span class="nv">NAME</span><span class="si">}</span>.pem --peer-key-file<span class="o">=</span>/srv/<span class="si">${</span><span class="nv">NAME</span><span class="si">}</span>-key.pem <span class="se">\</span>
+  --advertise-client-urls https://<span class="si">${</span><span class="nv">NAME</span><span class="si">}</span>:2379 --listen-client-urls https://<span class="si">${</span><span class="nv">NAME</span><span class="si">}</span>:2379 <span class="se">\</span>
+  --initial-advertise-peer-urls https://<span class="si">${</span><span class="nv">NAME</span><span class="si">}</span>:2380 --listen-peer-urls https://<span class="si">${</span><span class="nv">NAME</span><span class="si">}</span>:2380 <span class="se">\</span>
+  --discovery <span class="si">${</span><span class="nv">DISCOVERY_URL</span><span class="si">}</span> --debug
+</pre>
+
+
+<p><em>Notes the urls, <code>${NAME}</code> should be included when generating certificate</em></p>
+<h4>Check functionality</h4>
+<p>Get inside the <code>client</code> container and fire up below commands:</p>
+<pre class="code literal-block"><span></span>docker <span class="nb">exec</span> -it member sh
+</pre>
+
+
+<pre class="code literal-block"><span></span><span class="c1"># Create new key:value</span>
+curl --cacert ca.pem --cert client.pem --key client-key.pem https://member1:2379/v2/keys/foo -XPUT -d <span class="nv">value</span><span class="o">=</span>bar -v
+
+<span class="c1"># Get newly-create key:value</span>
+curl --cacert ca.pem --cert client.pem --key client-key.pem https://member1:2379/v2/keys/foo -XGET -v
+</pre>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/docker/" rel="tag">docker</a></li>
+            <li><a class="tag p-category" href="../../categories/etcd/" rel="tag">etcd</a></li>
+            <li><a class="tag p-category" href="../../categories/microservice/" rel="tag">microservice</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../../tips/postgres-cheatsheet/" rel="prev" title="Postgres cheatsheet">Previous post</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2017         <a href="mailto:me@tuanvm.com">Tuan Nguyen</a> 
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.js"></script><script>anchors.add();
+</script>
+</body>
+</html>
