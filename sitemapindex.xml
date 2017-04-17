@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>https://tuannvm.github.io/blogs/rss.xml</loc>
-  <lastmod>2017-04-17T11:28:00Z</lastmod>
+  <lastmod>2017-04-17T11:33:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/categories/aws.xml</loc>
@@ -15,7 +15,7 @@
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/categories/blogs.xml</loc>
-  <lastmod>2017-04-17T11:28:00Z</lastmod>
+  <lastmod>2017-04-17T11:33:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/categories/convert.xml</loc>
@@ -23,11 +23,11 @@
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/categories/docker-compose.xml</loc>
-  <lastmod>2017-04-17T11:28:00Z</lastmod>
+  <lastmod>2017-04-17T11:33:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/categories/docker.xml</loc>
-  <lastmod>2017-04-17T11:28:00Z</lastmod>
+  <lastmod>2017-04-17T11:33:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/categories/ebs.xml</loc>
@@ -67,7 +67,7 @@
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/categories/video.xml</loc>
-  <lastmod>2017-04-17T11:28:00Z</lastmod>
+  <lastmod>2017-04-17T11:33:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/categories/virtualenv.xml</loc>
@@ -79,11 +79,11 @@
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/rss.xml</loc>
-  <lastmod>2017-04-17T11:28:00Z</lastmod>
+  <lastmod>2017-04-17T11:33:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/sitemap.xml</loc>
-  <lastmod>2017-04-17T11:28:00Z</lastmod>
+  <lastmod>2017-04-17T11:33:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://tuannvm.github.io/tips/rss.xml</loc>
