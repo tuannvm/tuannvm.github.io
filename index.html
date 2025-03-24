@@ -98,10 +98,12 @@
                         const setTheme = (isDark) => {
                                 if (isDark) {
                                         document.body.setAttribute("data-theme", "dark");
+                                        document.documentElement.setAttribute("data-theme", "dark");
                                         themeIcon.classList.remove("fa-moon");
                                         themeIcon.classList.add("fa-sun");
                                 } else {
                                         document.body.removeAttribute("data-theme");
+                                        document.documentElement.removeAttribute("data-theme");
                                         themeIcon.classList.remove("fa-sun");
                                         themeIcon.classList.add("fa-moon");
                                 }
@@ -124,11 +126,13 @@
                         themeToggle.addEventListener("click", () => {
                                 if (document.body.hasAttribute("data-theme")) {
                                         document.body.removeAttribute("data-theme");
+                                        document.documentElement.removeAttribute("data-theme");
                                         localStorage.setItem("theme", "light");
                                         themeIcon.classList.remove("fa-sun");
                                         themeIcon.classList.add("fa-moon");
                                 } else {
                                         document.body.setAttribute("data-theme", "dark");
+                                        document.documentElement.setAttribute("data-theme", "dark");
                                         localStorage.setItem("theme", "dark");
                                         themeIcon.classList.remove("fa-moon");
                                         themeIcon.classList.add("fa-sun");
