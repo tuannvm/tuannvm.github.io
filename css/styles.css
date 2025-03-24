@@ -10,16 +10,20 @@
 	--box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 	--border-radius: 8px;
 	--transition: all 0.3s ease;
+	--gradient-start: #3498db;
+	--gradient-end: #2c3e50;
 }
 
 [data-theme="dark"] {
-	--bg-color: #1A1A1A;
+	--bg-color: #121212;
 	--text-color: #FAFAFA;
-	--link-color: #DDDDDD;
-	--accent-color: #3498db;
-	--secondary-color: #ecf0f1;
-	--highlight-bg: rgba(52, 152, 219, 0.1);
-	--box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	--link-color: #90CAF9;
+	--accent-color: #64B5F6;
+	--secondary-color: #B3E5FC;
+	--highlight-bg: rgba(52, 152, 219, 0.15);
+	--box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+	--gradient-start: #64B5F6;
+	--gradient-end: #42A5F5;
 }
 
 html {
@@ -30,7 +34,7 @@ html {
 body {
 	background-color: var(--bg-color);
 	color: var(--text-color);
-	transition: background-color 0.3s ease, color 0.3s ease;
+	transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* Responsive Typography */
@@ -82,7 +86,7 @@ main {
 	font-size: 3.5rem;
 	font-weight: 700;
 	margin-bottom: 0.5rem;
-	background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+	background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
@@ -213,6 +217,9 @@ main {
 	cursor: pointer;
 	z-index: 100;
 	transition: transform 0.3s ease;
+	padding: 8px;
+	border-radius: 50%;
+	background-color: var(--highlight-bg);
 }
 
 .theme-toggle:hover {

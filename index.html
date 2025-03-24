@@ -90,36 +90,58 @@
         </main>
 
         <script>
-                // Check for saved theme preference or use preferred color scheme
-                const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-                const savedTheme = localStorage.getItem("theme");
-                const themeToggle = document.querySelector(".theme-toggle");
-                const themeIcon = themeToggle.querySelector("i");
+                document.addEventListener('DOMContentLoaded', () => {
+                        const themeToggle = document.querySelector(".theme-toggle");
+                        const themeIcon = themeToggle.querySelector("i");
+                        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-                // Set the initial theme
-                if (savedTheme === "dark" || (!savedTheme && prefersDarkScheme.matches)) {
-                        document.body.setAttribute("data-theme", "dark");
-                        themeIcon.classList.remove("fa-moon");
-                        themeIcon.classList.add("fa-sun");
-                } else {
-                        document.body.removeAttribute("data-theme");
-                        themeIcon.classList.remove("fa-sun");
-                        themeIcon.classList.add("fa-moon");
-                }
+                        // Function to set theme
+                        const setTheme = (isDark) => {
+                                if (isDark) {
+                                        document.body.setAttribute("data-theme", "dark");
+                                        themeIcon.classList.remove("fa-moon");
+                                        themeIcon.classList.add("fa-sun");
+                                } else {
+                                        document.body.removeAttribute("data-theme");
+                                        themeIcon.classList.remove("fa-sun");
+                                        themeIcon.classList.add("fa-moon");
+                                }
+                        };
 
-                // Theme toggle functionality
-                themeToggle.addEventListener("click", () => {
-                        if (document.body.getAttribute("data-theme") === "dark") {
-                                document.body.removeAttribute("data-theme");
-                                localStorage.setItem("theme", "light");
-                                themeIcon.classList.remove("fa-sun");
-                                themeIcon.classList.add("fa-moon");
+                        // Check for saved theme or use system preference
+                        const savedTheme = localStorage.getItem("theme");
+
+                        if (savedTheme === "dark") {
+                                setTheme(true);
+                        } else if (savedTheme === "light") {
+                                setTheme(false);
+                        } else if (prefersDarkScheme.matches) {
+                                setTheme(true);
                         } else {
-                                document.body.setAttribute("data-theme", "dark");
-                                localStorage.setItem("theme", "dark");
-                                themeIcon.classList.remove("fa-moon");
-                                themeIcon.classList.add("fa-sun");
+                                setTheme(false);
                         }
+
+                        // Theme toggle functionality
+                        themeToggle.addEventListener("click", () => {
+                                if (document.body.hasAttribute("data-theme")) {
+                                        document.body.removeAttribute("data-theme");
+                                        localStorage.setItem("theme", "light");
+                                        themeIcon.classList.remove("fa-sun");
+                                        themeIcon.classList.add("fa-moon");
+                                } else {
+                                        document.body.setAttribute("data-theme", "dark");
+                                        localStorage.setItem("theme", "dark");
+                                        themeIcon.classList.remove("fa-moon");
+                                        themeIcon.classList.add("fa-sun");
+                                }
+                        });
+
+                        // Listen for system theme changes
+                        prefersDarkScheme.addEventListener("change", (e) => {
+                                if (!localStorage.getItem("theme")) {
+                                        setTheme(e.matches);
+                                }
+                        });
                 });
         </script>
 </body>
