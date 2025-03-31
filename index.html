@@ -106,14 +106,28 @@
                                 }
                         };
 
-                        // Check for saved theme or use dark theme by default
+                        // Check for saved theme or use system preference
                         const savedTheme = localStorage.getItem("theme");
+                        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
+                        // Initial theme setup
                         if (savedTheme === "light") {
                                 setTheme(true);
-                        } else {
+                        } else if (savedTheme === "dark") {
                                 setTheme(false);
+                        } else {
+                                // No saved preference, use system preference
+                                setTheme(!prefersDark.matches);
+                                localStorage.setItem("theme", prefersDark.matches ? "dark" : "light");
                         }
+
+                        // Listen for system theme changes
+                        prefersDark.addEventListener("change", (e) => {
+                                // Only update if user hasn't set a preference
+                                if (!localStorage.getItem("theme")) {
+                                        setTheme(!e.matches);
+                                }
+                        });
 
                         // Theme toggle functionality
                         themeToggle.addEventListener("click", () => {
