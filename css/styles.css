@@ -348,6 +348,224 @@ main {
   white-space: -pre-wrap;      /* Opera <7 */
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* IE */
+  border-radius: 4px;
+  margin: 1em 0;
+}
+
+/* Improve code block styling */
+.markdown-body pre code {
+  display: block;
+  padding: 1em;
+  overflow-x: auto;
+  line-height: 1.5;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.9em;
+}
+
+/* Shell code highlighting */
+.markdown-body pre code.language-shell,
+.markdown-body pre code.language-bash,
+.markdown-body pre code.language-sh {
+  background-color: var(--shell-bg, #282c34);
+  color: var(--shell-text, #abb2bf);
+  border-left: 4px solid var(--shell-border, #61afef);
+}
+
+/* Command prompt styling */
+.markdown-body pre code.language-shell .hljs-meta,
+.markdown-body pre code.language-bash .hljs-meta {
+  color: var(--shell-prompt, #98c379);
+  font-weight: bold;
+}
+
+/* Command arguments */
+.markdown-body pre code.language-shell .hljs-string,
+.markdown-body pre code.language-bash .hljs-string {
+  color: var(--shell-string, #e5c07b);
+}
+
+/* YAML code highlighting */
+.markdown-body pre code.language-yaml {
+  background-color: var(--yaml-bg, #282c34);
+  color: var(--yaml-text, #abb2bf);
+  border-left: 4px solid var(--yaml-border, #c678dd);
+}
+
+/* YAML keys */
+.markdown-body pre code.language-yaml .hljs-attr {
+  color: var(--yaml-key, #56b6c2);
+}
+
+/* YAML values */
+.markdown-body pre code.language-yaml .hljs-string {
+  color: var(--yaml-value, #98c379);
+}
+
+/* YAML comments */
+.markdown-body pre code.language-yaml .hljs-comment {
+  color: var(--yaml-comment, #7f848e);
+  font-style: italic;
+}
+
+/* Indent nested lists (for TOC hierarchy) */
+.markdown-body ul ul,
+.markdown-body ol ol,
+.markdown-body ul ol,
+.markdown-body ol ul {
+  margin-left: 2em; /* Adjust indentation level as needed */
+}
+
+/* Improve bullet point styling */
+.markdown-body ul {
+  list-style-type: disc;
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+
+.markdown-body ul li {
+  display: list-item;
+  margin-bottom: 0.5em;
+}
+
+/* Standard bullet styling with hierarchy */
+.markdown-body ul li::marker {
+  color: var(--text-color); /* Use standard text color */
+}
+
+/* Level 1 bullets - disc */
+.markdown-body ul {
+  list-style-type: disc;
+}
+
+/* Level 2 bullets - circle */
+.markdown-body ul ul {
+  list-style-type: circle;
+}
+
+/* Level 3 bullets - square */
+.markdown-body ul ul ul {
+  list-style-type: square;
+}
+
+/* Level 4 bullets - disclosure-closed (fallback to square) */
+.markdown-body ul ul ul ul {
+  list-style-type: square;
+}
+
+/* Hyperlink styling - consistent green shade */
+.markdown-body a {
+  color: #2ecc71; /* Emerald green */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.markdown-body a:hover {
+  color: #27ae60; /* Darker green on hover */
+  text-decoration: underline;
+}
+
+/* Special styling for Table of Contents */
+.markdown-body ul:first-of-type {
+  /* This targets the first unordered list in the markdown content, which is typically the TOC */
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.markdown-body ul:first-of-type li {
+  padding-left: 0;
+}
+
+.markdown-body ul:first-of-type li::marker {
+  content: none;
+}
+
+/* Nested items in TOC */
+.markdown-body ul:first-of-type ul {
+  list-style-type: none;
+}
+
+.markdown-body ul:first-of-type ul li {
+  padding-left: 1.5em;
+  position: relative;
+}
+
+.markdown-body ul:first-of-type ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0.2em;
+  color: var(--text-color);
+}
+
+/* Back to Top button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--back-to-top-bg, rgba(46, 204, 113, 0.8)); /* Semi-transparent green */
+  color: var(--back-to-top-color, white);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: var(--back-to-top-hover-bg, rgba(39, 174, 96, 0.9)); /* Darker green */
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 767px) {
+  .back-to-top {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* Improve table styling */
+.markdown-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  overflow-x: auto;
+  display: block;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  border: 1px solid var(--border-color, #ddd);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.markdown-body table th {
+  background-color: var(--table-header-bg, #f2f2f2);
+  font-weight: 600;
+}
+
+.markdown-body table tr:nth-child(even) {
+  background-color: var(--table-alt-row-bg, rgba(0, 0, 0, 0.03));
+}
+
+.markdown-body table tr:hover {
+  background-color: var(--table-hover-bg, rgba(0, 0, 0, 0.05));
 }
 
 @media (max-width: 767px) {

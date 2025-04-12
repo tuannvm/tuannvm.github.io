@@ -49,6 +49,10 @@
     <i class="fas fa-sun"></i>
   </button>
 
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
   <main class="fade-in cheatsheet-main">
     <h1>Argo Cheatsheet</h1>
     <!-- Simple Navigation -->
@@ -65,9 +69,16 @@
 
   <!-- Load Marked.js v4.3.0 -->
   <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
-  <!-- Load Highlight.js -->
+  <!-- Load Highlight.js with language support -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script>hljs.configure({ ignoreUnescapedHTML: true });</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/yaml.min.js"></script>
+  <script>
+    hljs.configure({ 
+      ignoreUnescapedHTML: true,
+      languages: ['bash', 'shell', 'yaml', 'json', 'javascript']
+    });
+  </script>
 
   <!-- Content Loading Script -->
   <script>
@@ -91,6 +102,30 @@
     }
     // Load the specific file
     loadGistFile(argoFileUrl, 'content');
+  </script>
+
+  <!-- Back to Top Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const backToTopButton = document.querySelector('.back-to-top');
+      
+      // Show button when scrolling down
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.add('visible');
+        } else {
+          backToTopButton.classList.remove('visible');
+        }
+      });
+      
+      // Scroll to top when button is clicked
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
   </script>
 
   <!-- Theme Toggle Script -->
