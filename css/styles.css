@@ -82,13 +82,13 @@ body::before {
 
 @media (min-width: 992px) {
 	html {
-		font-size: 18px;
+		font-size: 16px;
 	}
 }
 
 @media (min-width: 1200px) {
 	html {
-		font-size: 20px;
+		font-size: 17px;
 	}
 }
 
@@ -105,6 +105,12 @@ main {
 	margin: 0 auto;
 	position: relative;
 	z-index: 1;
+}
+
+/* Specific styles for the cheatsheet page main content */
+.cheatsheet-main {
+	align-items: flex-start; /* Align items to the start (left) */
+	text-align: left; /* Align text to the left */
 }
 
 /* Profile Section */

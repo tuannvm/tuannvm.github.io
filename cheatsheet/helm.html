@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kubernetes Cheatsheet | Helm Kubernetes Argo</title>
+  <title>Helm Cheatsheet | Helm Kubernetes Argo</title>
   <link rel="icon" href="../favicon.ico" type="image/png">
   <!-- Google Fonts and Font Awesome -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
   <!-- Base CSS -->
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/styles.css">
-  <meta name="description" content="Kubernetes cheatsheet and useful commands.">
+  <meta name="description" content="Helm cheatsheet and useful commands.">
   <!-- Github Markdown CSS -->
   <link id="github-markdown-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" integrity="sha512-zb2E5+B8s+gW16F5ALt8L1vgjBjgS2Ej0/p/0m+x95+oWJk20c0G7q+9nBv3bbTR70V17c1g2gC2A5zD+L4Ww==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link id="github-markdown-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-dark.min.css" integrity="sha512-Y1dMsqeMx79a/SFlh8ESBzf8u/0j8+kvz8+Pz6FHF/S41/4y44U++VmMz+S+Xj+uN5yqGz04rE/Y/bgQ9P8v/A==" crossorigin="anonymous" referrerpolicy="no-referrer" media="(prefers-color-scheme: dark)" disabled />
@@ -50,16 +50,16 @@
   </button>
 
   <main class="fade-in cheatsheet-main">
-    <h1>Kubernetes Cheatsheet</h1>
+    <h1>Helm Cheatsheet</h1>
     <!-- Simple Navigation -->
     <nav class="cheatsheet-nav">
       <a href="argo.html">Argo</a> |
-      <a href="index.html" class="active">Kubernetes</a> |
-      <a href="helm.html">Helm</a>
+      <a href="index.html">Kubernetes</a> |
+      <a href="helm.html" class="active">Helm</a>
     </nav>
     <hr>
     <section id="content" class="markdown-body">
-      <p>Loading Kubernetes content…</p>
+      <p>Loading Helm content…</p>
     </section>
   </main>
 
@@ -71,7 +71,7 @@
 
   <!-- Content Loading Script -->
   <script>
-    const kubernetesFileUrl = "https://gist.githubusercontent.com/tuannvm/4e1bcc993f683ee275ed36e67c30ac49/raw/kubernetes.md";
+    const helmFileUrl = "https://gist.githubusercontent.com/tuannvm/4e1bcc993f683ee275ed36e67c30ac49/raw/helm.md";
 
     function loadGistFile(url, elementId) {
       fetch(url)
@@ -91,7 +91,7 @@
         });
     }
     // Load the specific file
-    loadGistFile(kubernetesFileUrl, 'content');
+    loadGistFile(helmFileUrl, 'content');
   </script>
 
   <!-- Theme Toggle Script -->
