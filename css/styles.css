@@ -330,3 +330,28 @@ main {
 		padding: 0.6rem;
 	}
 }
+
+/* --- Markdown Specific Styles --- */
+
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+}
+
+/* Ensure code blocks wrap */
+.markdown-body pre {
+  white-space: pre-wrap;       /* CSS3 */
+  white-space: -moz-pre-wrap;  /* Firefox */
+  white-space: -pre-wrap;      /* Opera <7 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* IE */
+}
+
+@media (max-width: 767px) {
+  .markdown-body {
+    padding: 15px;
+  }
+}
