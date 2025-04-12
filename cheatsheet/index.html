@@ -1,33 +1,126 @@
----
-layout: default
-title: "#Helm #Kubernetes #cheatsheet, happy helming!"
-permalink: /kubernetes/
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>#Helm #Kubernetes #Argo #Cheatsheet</title>
+  <link rel="icon" href="../favicon.ico" type="image/png">
+  <!-- Google Fonts and Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <!-- Existing CSS (reset and styles) using relative paths -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <meta name="description" content="Your personal cheatsheet hosting for Helm, Kubernetes, and Argo">
+</head>
+<body>
+  <!-- Theme Toggle Button (from your main index.html) -->
+  <button class="theme-toggle" aria-label="Toggle light mode">
+    <i class="fas fa-sun"></i>
+  </button>
+  
+  <main class="fade-in">
+    <h1>#Helm #Kubernetes #Argo #Cheatsheet</h1>
+    <!-- Sections to load dynamic content -->
+    <section id="argo-content">
+      <p>Loading Argo content…</p>
+    </section>
+    
+    <hr>
+    
+    <section id="helm-content">
+      <p>Loading Helm content…</p>
+    </section>
+    
+    <hr>
+    
+    <section id="kubernetes-content">
+      <p>Loading Kubernetes content…</p>
+    </section>
+  </main>
+  
+  <!-- Load Marked.js to convert Markdown to HTML -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
+  <!-- JavaScript to dynamically fetch each gist file -->
+  <script>
+    // Define the raw URLs for your three files (always get the latest version)
+    const files = {
+      argo: "https://gist.githubusercontent.com/tuannvm/4e1bcc993f683ee275ed36e67c30ac49/raw/argo.md",
+      helm: "https://gist.githubusercontent.com/tuannvm/4e1bcc993f683ee275ed36e67c30ac49/raw/helm.md",
+      kubernetes: "https://gist.githubusercontent.com/tuannvm/4e1bcc993f683ee275ed36e67c30ac49/raw/kubernetes.md"
+    };
 
-<div id="gist-content">
-  Loading gist content...
-</div>
+    // Function that fetches raw Markdown, converts it and injects it by element ID.
+    function loadGistFile(url, elementId) {
+      fetch(url)
+        .then(response => response.text())
+        .then(markdown => {
+          const html = marked.parse(markdown);
+          document.getElementById(elementId).innerHTML = html;
+        })
+        .catch(error => {
+          console.error('Error fetching file:', error);
+          document.getElementById(elementId).innerText = 'Error loading content.';
+        });
+    }
 
-<!-- Option 1: Using GitHub's Official Gist Embed Script -->
-<!-- Uncomment the following line if you want the standard GitHub style -->
-<!-- <script src="https://gist.github.com/tuannvm/4e1bcc993f683ee275ed36e67c30ac49.js"></script> -->
+    // Load each file into its corresponding container.
+    loadGistFile(files.argo, 'argo-content');
+    loadGistFile(files.helm, 'helm-content');
+    loadGistFile(files.kubernetes, 'kubernetes-content');
+  </script>
+  
+  <!-- Theme Toggle Script (reuse your theme toggle logic) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.querySelector(".theme-toggle");
+      const themeIcon = themeToggle.querySelector("i");
+      const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-<!-- Option 2: Dynamically Fetching and Rendering Raw Markdown -->
-<!-- Include a Markdown parser such as Marked.js from a CDN -->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
-  // Replace the URL below with the raw URL of your gist file
-  const gistRawUrl = 'https://gist.githubusercontent.com/tuannvm/4e1bcc993f683ee275ed36e67c30ac49/raw';
+      const setTheme = (isLight) => {
+        if (isLight) {
+          document.body.setAttribute("data-theme", "light");
+          document.documentElement.setAttribute("data-theme", "light");
+          themeIcon.classList.remove("fa-sun");
+          themeIcon.classList.add("fa-moon");
+        } else {
+          document.body.removeAttribute("data-theme");
+          document.documentElement.removeAttribute("data-theme");
+          themeIcon.classList.remove("fa-moon");
+          themeIcon.classList.add("fa-sun");
+        }
+      };
 
-  fetch(gistRawUrl)
-    .then(response => response.text())
-    .then(markdown => {
-      // Convert the markdown to HTML using Marked.js
-      const html = marked.parse(markdown);
-      document.getElementById('gist-content').innerHTML = html;
-    })
-    .catch(error => {
-      console.error('Error fetching gist:', error);
-      document.getElementById('gist-content').innerText = 'There was an error loading the gist content.';
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+      if (savedTheme === "light") {
+        setTheme(true);
+      } else if (savedTheme === "dark") {
+        setTheme(false);
+      } else {
+        setTheme(!prefersDark.matches);
+        localStorage.setItem("theme", prefersDark.matches ? "dark" : "light");
+      }
+
+      prefersDark.addEventListener("change", (e) => {
+        if (!localStorage.getItem("theme")) {
+          setTheme(!e.matches);
+        }
+      });
+
+      themeToggle.addEventListener("click", () => {
+        if (document.body.hasAttribute("data-theme")) {
+          setTheme(false);
+          localStorage.setItem("theme", "dark");
+        } else {
+          setTheme(true);
+          localStorage.setItem("theme", "light");
+        }
+      });
     });
-</script>
+  </script>
+</body>
+</html>
