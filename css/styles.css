@@ -341,6 +341,14 @@ main {
   padding: 45px;
 }
 
+/* Enhanced word wrapping for all content */
+.markdown-body {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word; /* For non-CJK text */
+  hyphens: auto;
+}
+
 /* Ensure code blocks wrap */
 .markdown-body pre {
   white-space: pre-wrap;       /* CSS3 */
@@ -348,8 +356,17 @@ main {
   white-space: -pre-wrap;      /* Opera <7 */
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* IE */
+  overflow-x: auto;            /* Add horizontal scrolling if needed */
+  max-width: 100%;             /* Ensure it doesn't overflow container */
   border-radius: 4px;
   margin: 1em 0;
+}
+
+/* Ensure inline code wraps properly */
+.markdown-body code {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
 /* Improve code block styling */
@@ -360,6 +377,8 @@ main {
   line-height: 1.5;
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   font-size: 0.9em;
+  max-width: 100%;
+  word-break: break-all; /* Force breaking of long words */
 }
 
 /* Shell code highlighting */
@@ -546,6 +565,24 @@ main {
   margin: 1em 0;
   overflow-x: auto;
   display: block;
+  font-size: 0.9em; /* Slightly smaller font for tables */
+  table-layout: fixed; /* Fixed layout helps with word wrapping */
+}
+
+/* Ensure table cells wrap content properly */
+.markdown-body table td,
+.markdown-body table th {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 300px; /* Prevent extremely wide cells */
+}
+
+/* Handle long URLs and paths better */
+.markdown-body a {
+  word-break: break-all;
+  overflow-wrap: break-word;
+  display: inline-block;
+  max-width: 100%;
 }
 
 .markdown-body table th,
@@ -568,8 +605,67 @@ main {
   background-color: var(--table-hover-bg, rgba(0, 0, 0, 0.05));
 }
 
+/* Responsive improvements for mobile devices */
 @media (max-width: 767px) {
   .markdown-body {
-    padding: 15px;
+    padding: 15px 10px;
+    font-size: 0.95em;
+  }
+  
+  /* Smaller headings on mobile */
+  .markdown-body h1 {
+    font-size: 1.8em;
+  }
+  
+  .markdown-body h2 {
+    font-size: 1.5em;
+  }
+  
+  .markdown-body h3 {
+    font-size: 1.3em;
+  }
+  
+  /* Adjust code blocks for mobile */
+  .markdown-body pre {
+    padding: 0.8em;
+    margin: 0.8em 0;
+  }
+  
+  .markdown-body pre code {
+    font-size: 0.85em;
+  }
+  
+  /* Adjust table display on small screens */
+  .markdown-body table {
+    font-size: 0.85em;
+  }
+  
+  .markdown-body table th,
+  .markdown-body table td {
+    padding: 6px 8px;
+  }
+  
+  /* Improve navigation on mobile */
+  .cheatsheet-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .cheatsheet-nav a {
+    margin: 0.3rem 0;
+    padding: 0.3rem 0;
+  }
+  
+  /* Hide the separator on mobile */
+  .cheatsheet-nav .nav-separator {
+    display: none;
+  }
+  
+  /* Make main heading smaller on mobile */
+  main.cheatsheet-main h1 {
+    font-size: 1.8em;
+    margin-bottom: 0.8em;
   }
 }
