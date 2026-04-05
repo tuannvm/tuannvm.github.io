@@ -3,126 +3,239 @@
 
 <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Tommy Nguyen - Engineering Manager, Marathon Runner, and Solopreneur">
-        <meta name="keywords"
-                content="Cloud, Kubernetes, DevOps, Engineering, Marathon, Running, Solopreneur, Engineering Manager">
+        <meta name="description" content="Tommy Nguyen - Engineering Manager, Public Speaker, Avid Runner">
 
-        <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://tuannvm.com/">
-        <meta property="og:title" content="Tommy Nguyen | Engineering Manager & Marathon Runner">
-        <meta property="og:description" content="Tommy Nguyen - Engineering Manager, Marathon Runner, and Solopreneur">
+        <meta property="og:title" content="Tommy Nguyen">
+        <meta property="og:description" content="Building LLM-powered products and engineering teams with a marathon mindset.">
 
-        <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
-        <meta property="twitter:url" content="https://tuannvm.com/">
-        <meta property="twitter:title" content="Tommy Nguyen | Engineering Manager & Marathon Runner">
-        <meta property="twitter:description"
-                content="Tommy Nguyen - Engineering Manager, Marathon Runner, and Solopreneur">
+        <meta property="twitter:title" content="Tommy Nguyen">
 
-        <title>Tommy Nguyen | Engineering Manager & Marathon Runner</title>
+        <title>Tommy Nguyen</title>
 
         <link rel="icon" href="favicon.ico" type="image/png" />
-
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-                rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/styles.css">
+        <style>
+                :root {
+                        --accent: #44D62C;
+                        --accent-dim: rgba(68, 214, 44, 0.15);
+                        --text: #FFFFFF;
+                        --text-muted: #777777;
+                        --bg: #050505;
+                }
+
+                [data-theme="light"] {
+                        --text: #0A0A0A;
+                        --text-muted: #555555;
+                        --bg: #FFFFFF;
+                }
+
+                html {
+                        height: 100%;
+                        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+                        background: var(--bg);
+                        color: var(--text);
+                        scroll-behavior: smooth;
+                        -webkit-font-smoothing: antialiased;
+                }
+
+                body {
+                        min-height: 100%;
+                        margin: 0;
+                        padding: 0;
+                        background: var(--bg);
+                        color: var(--text);
+                        line-height: 1.5;
+                }
+
+                /* Subtle radial glow behind content */
+                body::before {
+                        content: "";
+                        position: fixed;
+                        top: 30%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width: 600px;
+                        height: 600px;
+                        background: radial-gradient(circle, rgba(68,214,44,0.08) 0%, transparent 70%);
+                        pointer-events: none;
+                        z-index: 0;
+                }
+
+                main {
+                        position: relative;
+                        z-index: 1;
+                        max-width: 600px;
+                        margin: 0 auto;
+                        padding: 10rem 2rem;
+                        text-align: center;
+                }
+
+                .avatar {
+                        width: 108px;
+                        height: 108px;
+                        border-radius: 50%;
+                        background: linear-gradient(135deg, #44D62C 0%, #3AB525 50%, #2A8C1A 100%);
+                        margin: 0 auto 2.5rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 2rem;
+                        font-weight: 800;
+                        color: #000;
+                        letter-spacing: -2px;
+                        box-shadow: 0 0 60px rgba(68, 214, 44, 0.35);
+                }
+
+                h1 {
+                        font-size: 3rem;
+                        font-weight: 800;
+                        margin: 0 0 0.75rem;
+                        letter-spacing: -0.03em;
+                        line-height: 1.1;
+                }
+
+                .tagline {
+                        font-size: 0.8rem;
+                        font-weight: 600;
+                        color: var(--accent);
+                        margin: 0 0 2rem;
+                        letter-spacing: 0.12em;
+                        text-transform: uppercase;
+                        line-height: 2;
+                }
+
+                .bio {
+                        font-size: 1.125rem;
+                        font-weight: 400;
+                        color: var(--text);
+                        opacity: 0.75;
+                        line-height: 1.7;
+                        margin-bottom: 3rem;
+                        max-width: 480px;
+                        margin-left: auto;
+                        margin-right: auto;
+                }
+
+                .social {
+                        display: flex;
+                        justify-content: center;
+                        gap: 1rem;
+                }
+
+                .social a {
+                        width: 48px;
+                        height: 48px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: var(--text-muted);
+                        background: var(--accent-dim);
+                        border: 1px solid rgba(68, 214, 44, 0.2);
+                        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+
+                .social a:hover {
+                        color: #000;
+                        background: var(--accent);
+                        border-color: var(--accent);
+                        transform: translateY(-3px);
+                        box-shadow: 0 8px 24px rgba(68, 214, 44, 0.35);
+                }
+
+                .social i {
+                        font-size: 1.1rem;
+                }
+
+                .theme-toggle {
+                        position: fixed;
+                        top: 1.5rem;
+                        right: 1.5rem;
+                        width: 42px;
+                        height: 42px;
+                        border-radius: 50%;
+                        border: 1px solid rgba(255,255,255,0.08);
+                        background: rgba(255,255,255,0.03);
+                        color: var(--text-muted);
+                        cursor: pointer;
+                        transition: all 0.25s ease;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                }
+
+                .theme-toggle:hover {
+                        color: var(--accent);
+                        border-color: rgba(68, 214, 44, 0.3);
+                        background: var(--accent-dim);
+                }
+
+                @media (max-width: 600px) {
+                        main {
+                                padding: 6rem 1.5rem;
+                        }
+                        h1 {
+                                font-size: 2.25rem;
+                        }
+                        .bio {
+                                font-size: 1rem;
+                        }
+                        .avatar {
+                                width: 90px;
+                                height: 90px;
+                                font-size: 1.65rem;
+                        }
+                }
+        </style>
 </head>
 
 <body>
-        <button class="theme-toggle" aria-label="Toggle light mode">
-                <i class="fas fa-sun"></i>
+        <button class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
         </button>
-        <main class="fade-in">
-                <div class="profile-section">
-                        <div class="intro">Tommy Nguyen</div>
-                        <div class="tagline">Engineering Manager / Marathon Runner / Solopreneur</div>
-                        <div class="location"><i class="fas fa-map-marker-alt"></i> Costa Mesa, California</div>
-                        <div class="bio">
-                                Building digital products and engineering teams with a marathon mindset — persistent,
-                                focused, and in it for the long run.
-                        </div>
-                </div>
 
-                <div class="social-section">
-                        <div class="icons-social">
-                                <a target="_blank" href="https://www.linkedin.com/in/tuannvm" aria-label="LinkedIn"><i
-                                                class="fab fa-linkedin"></i></a>
-                                <a target="_blank" href="https://github.com/tuannvm" aria-label="GitHub"><i
-                                                class="fab fa-github"></i></a>
-                                <a target="_blank" href="https://x.com/tuannvm" aria-label="X"><i
-                                                class="fab fa-x-twitter"></i></a>
-                        </div>
+        <main>
+                <div class="avatar">TN</div>
+                <h1>Tommy Nguyen</h1>
+                <p class="tagline">Engineering Manager / Avid Runner / Public Speaker</p>
+                <p class="bio">Building LLM-powered products and engineering teams with a marathon mindset — persistent, focused, and in it for the long run.</p>
+                <div class="social">
+                        <a href="https://www.linkedin.com/in/tuannvm" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/tuannvm" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://x.com/tuannvm" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="mailto:tnguyen@liftoff.io" aria-label="Email"><i class="fas fa-envelope"></i></a>
                 </div>
         </main>
 
         <script>
                 document.addEventListener('DOMContentLoaded', () => {
-                        const themeToggle = document.querySelector(".theme-toggle");
-                        const themeIcon = themeToggle.querySelector("i");
-                        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
-                        // Function to set theme
-                        const setTheme = (isLight) => {
-                                if (isLight) {
-                                        document.body.setAttribute("data-theme", "light");
-                                        document.documentElement.setAttribute("data-theme", "light");
-                                        themeIcon.classList.remove("fa-sun");
-                                        themeIcon.classList.add("fa-moon");
+                        const btn = document.querySelector('.theme-toggle');
+                        const icon = btn.querySelector('i');
+                        const set = (light) => {
+                                if (light) {
+                                        document.body.setAttribute('data-theme', 'light');
+                                        icon.classList.replace('fa-moon', 'fa-sun');
                                 } else {
-                                        document.body.removeAttribute("data-theme");
-                                        document.documentElement.removeAttribute("data-theme");
-                                        themeIcon.classList.remove("fa-moon");
-                                        themeIcon.classList.add("fa-sun");
+                                        document.body.removeAttribute('data-theme');
+                                        icon.classList.replace('fa-sun', 'fa-moon');
                                 }
                         };
-
-                        // Check for saved theme or use system preference
-                        const savedTheme = localStorage.getItem("theme");
-                        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-
-                        // Initial theme setup
-                        if (savedTheme === "light") {
-                                setTheme(true);
-                        } else if (savedTheme === "dark") {
-                                setTheme(false);
-                        } else {
-                                // No saved preference, use system preference
-                                setTheme(!prefersDark.matches);
-                                localStorage.setItem("theme", prefersDark.matches ? "dark" : "light");
-                        }
-
-                        // Listen for system theme changes
-                        prefersDark.addEventListener("change", (e) => {
-                                // Only update if user hasn't set a preference
-                                if (!localStorage.getItem("theme")) {
-                                        setTheme(!e.matches);
-                                }
-                        });
-
-                        // Theme toggle functionality
-                        themeToggle.addEventListener("click", () => {
-                                if (document.body.hasAttribute("data-theme")) {
-                                        setTheme(false); // Switch to dark theme (default)
-                                        localStorage.setItem("theme", "dark");
-                                } else {
-                                        setTheme(true); // Switch to light theme
-                                        localStorage.setItem("theme", "light");
-                                }
-                        });
-
-                        // Listen for system theme changes
-                        prefersDarkScheme.addEventListener("change", (e) => {
-                                if (!localStorage.getItem("theme")) {
-                                        setTheme(e.matches);
-                                }
+                        if (localStorage.theme === 'light') set(true);
+                        else if (localStorage.theme === 'dark') set(false);
+                        else set(!window.matchMedia('(prefers-color-scheme: light)').matches);
+                        btn.addEventListener('click', () => {
+                                const is = document.body.hasAttribute('data-theme');
+                                set(!is);
+                                localStorage.theme = is ? 'dark' : 'light';
                         });
                 });
         </script>
 </body>
-
 </html>
